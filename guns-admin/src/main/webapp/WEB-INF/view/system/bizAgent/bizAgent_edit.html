@@ -1,0 +1,63 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="bizAgentInfoForm">
+
+            <input type="hidden" id="agentId" value="${item.agentId}">
+            
+            <input type="hidden" id="isStarValue" value="${item.isStar}">
+            <input type="hidden" id="agentTypeValue" value="${item.agentType}">
+            <input type="hidden" id="agentStatusValue" value="${item.agentStatus}">
+            <input type="hidden" id="applyStatusValue" value="${item.applyStatus}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">                         
+                            <#input id="industry1" name="行业1" value="${item.industry1}" underline="true"/>
+                            <#input id="industry2" name="行业2" value="${item.industry2}" underline="true"/>
+                            <#input id="industry3" name="行业3" value="${item.industry3}" underline="true"/>
+                            <#input id="passportId" name="会员ID" value="${item.passportId}" underline="true"/>
+                            <#input id="province" name="省" value="${item.province}" underline="true"/>
+                            <#input id="city" name="市" value="${item.city}" underline="true"/>
+                            <#input id="county" name="区" value="${item.county}" underline="true"/>
+                            <#input id="lat" name="经度" value="${item.lat}" underline="true"/>
+                            <#input id="lng" name="纬度" value="${item.lng}" underline="true"/>
+                            <#input id="star" name="星级" value="${item.star}" underline="true"/> 
+                            <#input id="recommender" name="推荐人" value="${item.recommender}" underline="true"/>    
+                </div>
+
+                <div class="col-sm-6">
+                           <#input id="orderTotalCount" name="接单量" value="${item.orderTotalCount}" underline="true"/>      
+                			<#select id="isStar" name="明星代理"  underline="true">
+                                                <option value="0">非</option>
+                                                <option value="1">是</option>
+                            </#select>   
+                            <#input id="address" name="详细地址" value="${item.address}" underline="true"/>                      
+                            <#select id="agentType" name="代理商类型"  underline="true">
+                                            <option value="1">个人</option>
+                                            <option value="2">企业</option>
+                            </#select>
+                            <#select id="agentStatus" name="代理商状态" underline="true">
+                                            <option value="0">禁用</option>
+                                            <option value="1">启用</option>
+                            </#select>
+                            <#input id="name" name="代理商名称" value="${item.name}" underline="true"/>
+                             <#select id="applyStatus" name="审核状态"  underline="true">
+                                            <option value="0">未审核</option>
+                                            <option value="1">通过</option>
+                                            <option value="2">驳回</option>
+                            </#select>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="BizAgentInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BizAgentInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/bizAgent/bizAgent_info.js"></script>
+@}

@@ -1,0 +1,56 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${item.agentId}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">                        
+                            <#input id="agentCompanyName" name="代理商名称" value="${item.agent_company_name}" underline="true"/>
+                            <#input id="agentCompanyContactor" name="联系人姓名" value="${item.agent_company_contactor}" underline="true"/>
+                            <#input id="agentCompanyMobile" name="联系人手机号" value="${item.agent_company_mobile}" underline="true"/>
+                            <#input id="businessLicenseNo" name="营业执照号码" value="${item.business_license_no}" underline="true"/>
+                           
+                            <#avatar id="business_license" name="营业执照" underline="true" avatarImg="${item.business_license}"/>
+                            
+                            <#avatar id="organization_code_certificate" name="组织机构代码证" underline="true" avatarImg="${item.organization_code_certificate}"/>
+                            
+                            <#avatar id="tax_registration_certificate" name="税务登记证" underline="true" avatarImg="${item.tax_registration_certificate}"/>                          
+                            <#input id="bankCompany" name="开户行" value="${item.bank_company}" underline="true"/>
+                            <#input id="bankCardNum" name="卡号" value="${item.bank_card_num}" underline="true"/>
+
+                            <#textarea id="companyIntroduce" name="公司简介" underline="true"> value="${item.company_introduce}"</#textarea>
+                            
+                                                  
+                </div>
+
+                <div class="col-sm-6">
+   
+                            <#avatar id="trustee" name="委托人身份证" underline="true" avatarImg="${item.trustee}"/>
+                            
+                            <#avatar id="agent_certificate1" name="资格证书1" underline="true" avatarImg="${item.agent_certificate1}"/>
+                            
+                            <#avatar id="power_of_attorney" name="委托书" underline="true" avatarImg="${item.power_of_attorney}"/>             
+                            
+                            <#avatar id="agent_certificate2" name="资格证书2" underline="true" avatarImg="${item.agent_certificate2}"/>
+                            
+                                        
+                            <#avatar id="company_logo" name="公司logo" underline="true" avatarImg="${item.company_logo}"/>
+                            
+                            <#input id="companyScale" name="企业规模" value="${item.company_scale}" underline="true"/>  
+                            <#input id="companyBuildTime" name="成立时间" value="${item.company_build_time}" underline="true"/> 
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BizAgentInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/bizAgent/bizAgentinfo.js"></script>
+@}

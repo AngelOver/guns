@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.common.persistence.dao.BizPassportMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.stylefeng.guns.common.persistence.model.BizPassport">
+		<id column="passport_id" property="passportId" />
+		<result column="verify_apply_id" property="verifyApplyId" />
+		<result column="agent_id" property="agentId" />
+		<result column="industry_id" property="industryId" />
+		<result column="account" property="account" />
+		<result column="password" property="password" />
+		<result column="role" property="role" />
+		<result column="nickname" property="nickname" />
+		<result column="headimg" property="headimg" />
+		<result column="mobile" property="mobile" />
+		<result column="email" property="email" />
+		<result column="sex" property="sex" />
+		<result column="verify" property="verify" />
+		<result column="score" property="score" />
+		<result column="balance" property="balance" />
+		<result column="status" property="status" />
+		<result column="created_at" property="createdAt" />
+		<result column="verify_password" property="verifyPassword" />
+		<result column="verify_email" property="verifyEmail" />
+		<result column="verify_tel" property="verifyTel" />
+		<result column="address" property="address" />
+		<result column="address_id" property="addressId" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        passport_id AS passportId, verify_apply_id AS verifyApplyId, agent_id AS agentId, industry_id AS industryId, account, password, role, nickname, headimg, mobile, email, sex, verify, score, balance, status, created_at AS createdAt
+    </sql>
+    
+    <select id="selectByMobile" parameterType="java.lang.String" resultMap="BaseResultMap">
+       select * from biz_passport where mobile = #{mobile}
+    </select>
+
+</mapper>

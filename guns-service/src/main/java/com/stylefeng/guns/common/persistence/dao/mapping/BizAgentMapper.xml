@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.common.persistence.dao.BizAgentMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.stylefeng.guns.common.persistence.model.BizAgent">
+		<id column="agent_id" property="agentId" />
+		<result column="industry1" property="industry1" />
+		<result column="industry2" property="industry2" />
+		<result column="industry3" property="industry3" />
+		<result column="passport_id" property="passportId" />
+		<result column="province" property="province" />
+		<result column="city" property="city" />
+		<result column="county" property="county" />
+		<result column="address" property="address" />
+		<result column="lat" property="lat" />
+		<result column="lng" property="lng" />
+		<result column="star" property="star" />
+		<result column="order_total_count" property="orderTotalCount" />
+		<result column="is_star" property="isStar" />
+		<result column="agent_type" property="agentType" />
+		<result column="name" property="name" />
+		<result column="recommender" property="recommender" />
+		<result column="agent_status" property="agentStatus" />
+		<result column="apply_status" property="applyStatus" />
+		<result column="created_at" property="createdAt" />
+		<result column="recommend" property="recommend" />
+		<result column="authentication" property="authentication" />
+		<result column="position" property="position" />
+		<result column="imgUrl" property="imgUrl" />
+		<result column="business" property="business" />
+		<result column="experience" property="experience" />
+		<result column="customer" property="customer" />
+		<result column="expertise" property="expertise" />
+		<result column="example" property="example" />
+		<result column="example2" property="example2" />
+		<result column="phone" property="phone" />
+		<result column="describe" property="describe" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        agent_id AS agentId, industry1, industry2, industry3, passport_id AS passportId, province, city, county, address, lat, lng, star, order_total_count AS orderTotalCount, is_star AS isStar, agent_type AS agentType, name, recommender, agent_status AS agentStatus, apply_status AS applyStatus, created_at AS createdAt 
+        , recommend, authentication, position, imgUrl, business, experience, customer, expertise, example, example2
+        
+    </sql>
+    
+     <select id="selectAgentInfo" resultType="map">
+	   select b.* from biz_agent a left join biz_agent_company b
+	   on a.agent_id = b.agent_id where a.agent_id = #{ bizAgentId} 
+	 </select>
+</mapper>

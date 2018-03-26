@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.common.persistence.dao.BizInvoiceMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.stylefeng.guns.common.persistence.model.BizInvoice">
+		<id column="invoice_id" property="invoiceId" />
+		<result column="passport_id" property="passportId" />
+		<result column="name" property="name" />
+		<result column="type1" property="type1" />
+		<result column="type2" property="type2" />
+		<result column="num" property="num" />
+		<result column="address" property="address" />
+		<result column="type3" property="type3" />
+		<result column="username" property="username" />
+		<result column="mobile" property="mobile" />
+		<result column="service_id" property="serviceId" />
+		<result column="order_create_time" property="orderCreateTime" />
+		<result column="order_apply_time" property="orderApplyTime" />
+		<result column="invoice_head" property="invoiceHead" />
+		<result column="order_num" property="orderNum" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        invoice_id AS invoiceId, passport_id AS passportId, name, type1, type2, num, address, type3, username, mobile, service_id AS serviceId, order_create_time AS orderCreateTime, order_apply_time AS orderApplyTime, invoice_head AS invoiceHead,order_num AS orderNum
+    </sql>
+    
+    <!-- 发票列表 -->
+    <select id="getInvoiceList" resultType="map">
+      SELECT  a.* , b.`name` AS service_name FROM biz_invoice  a 
+		LEFT JOIN biz_service b ON b.service_id = a.service_id 
+			WHERE 1=1
+       <if test="map.type!= null and map.type!= ''">
+			AND a.type1 = #{map.type}
+		</if>
+       <if test="map.service_type!= null and map.service_type!= ''">
+			AND a.service_type like CONCAT('%',#{map.service_type},'%')
+		</if>
+		<if test="map.apply_name!= null and map.apply_name!= ''">
+			AND a.username  like CONCAT('%',#{map.apply_name},'%')
+		</if>  
+		<if test="map.order_num!= null and map.order_num!= ''">
+			AND a.order_num like CONCAT('%',#{map.order_num},'%')
+		</if> 				
+		<if test="map.begin_time!= null and map.begin_time!= ''">
+			AND a.order_create_time &gt; #{map.begin_time}
+		</if> 
+		<if test="map.end_time!= null and map.end_time!= ''">
+			AND a.order_create_time &lt; #{map.end_time}
+		</if> 
+		<if test="map.pageNo != null and  map.pageSize != null">
+				LIMIT #{map.pageNo} , #{map.pageSize}
+		</if>	
+    </select>
+
+</mapper>

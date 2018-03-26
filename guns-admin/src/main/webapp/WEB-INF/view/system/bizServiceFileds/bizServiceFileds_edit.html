@@ -1,0 +1,84 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal"  id ="bizServiceFiledForm">
+            <input type="hidden" id="filedId" value="${item.filedId}">
+            <input type="hidden" id="categoryId" value="${item.categoryId}">
+             <input type="hidden" id="isMustValue" value="${item.isMust}">
+              <input type="hidden" id="typeValue" value="${item.type}">
+             <div class="row">          
+                <div class="col-sm-12" id="itemsArea">                                      
+                            <#input id="categoryName" name="分类名称" value="${item.categotyName}" underline="true"
+                            hidden="categoryId"  readonly="readonly"
+							clickFun="BizServiceFiledsInfoDlg.showMenuSelectTree(); return false;"
+							style="background-color: #ffffff !important;"
+							selectFlag="true" selectId="pcodeTreeDiv" selectTreeId="pcodeTree" selectStyle="width:244px !important;"/>
+                            
+                            <#input id="agentId_name" name="代理商名称" value="${item.agentId}" underline="true" readonly="readonly" hidden="agentId"
+							clickFun="BizServiceFiledsInfoDlg.showDeptSelectTree(); return false;"
+							style="background-color: #ffffff !important;"/>
+							                    
+                             <#select id="isMust" name="必填" underline="true">
+                                                <option value="2">非</option>
+                                                <option value="1">是</option>
+                            </#select>
+                            <#input id="sort" name="排序" value="${item.sort}" underline="true"/>                                                      
+                             <#select id="type" name="字段类型" underline="true">
+                                                <option value="1">文本</option>
+                                                <option value="2">单选</option>
+                                                <option value="3">复选</option>
+                                                <option value="4">文件</option>
+                                                <option value="5">时间</option>                                              
+                            </#select>                           
+                            <#input id="scale" name="可选范围" value="${item.scale}" underline="true"/>                                                    
+                   		 <div class="form-group">
+	                        <label class="col-sm-3 control-label">字段名</label>
+	                        <div class="col-sm-7">
+	                            <input class="form-control" id="fieldName"  value="${item.fieldName}" type="text">
+	                        </div>
+	                        <div class="col-sm-2">
+	                            <#button btnCss="info" name="字段值" icon="fa-plus" clickFun="BizServiceFiledsInfoDlg.addItem()"/>
+	                        </div>
+                        </div> 
+                     </div>
+                    <div class="hr-line-dashed"></div>
+                     @for(item in subDicts){
+                        <div class="form-group" name="dictItem" id="dictItem">
+				            <label class="col-sm-3 control-label">值</label>
+				            <div class="col-sm-7">
+				                <input class="form-control" type="text" name="itemNum" value="${item.value}">
+				            </div>           
+				            <div class="col-sm-2">
+				                <#button btnCss="danger" name="删除" id="cancel" icon="fa-remove" clickFun="BizServiceFiledsInfoDlg.deleteItem(event)"/>
+				            </div>
+				        </div>
+                    @}
+                </div>
+			 <!-- 这是部门选择的下拉框 -->
+			<div id="menuContent" class="menuContent"
+				style="display: none; position: absolute; z-index: 200;">
+				<ul id="treeDemo" class="ztree tree-box" style="width: 249px !important;"></ul>
+			</div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="BizServiceFiledsInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BizServiceFiledsInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/template" id="itemTemplate">
+        <div class="form-group" name="dictItem" id="dictItem">
+            <label class="col-sm-3 control-label">值</label>
+            <div class="col-sm-7">
+                <input class="form-control" type="text" name="itemNum">
+            </div>           
+            <div class="col-sm-2">
+                <#button btnCss="danger" name="删除" id="cancel" icon="fa-remove" clickFun="BizServiceFiledsInfoDlg.deleteItem(event)"/>
+            </div>
+        </div>
+    </script>
+<script src="${ctxPath}/static/modular/system/bizServiceFileds/bizServiceFileds_info.js"></script>
+@}

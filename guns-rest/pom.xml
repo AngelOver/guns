@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.stylefeng.guns</groupId>
+	<artifactId>guns-rest</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>guns-rest</name>
+	<description>guns REST服务器</description>
+
+	<parent>
+		<groupId>com.stylefeng</groupId>
+		<artifactId>guns-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../guns-parent/pom.xml</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.stylefeng</groupId>
+			<artifactId>guns-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.stylefeng</groupId>
+			<artifactId>guns-service</artifactId>
+		</dependency>
+		
+		<!--UEditor依赖的jar包 -->
+			<dependency>
+			    <groupId>org.json</groupId>
+			    <artifactId>json</artifactId>
+			</dependency>
+			<dependency>
+			    <groupId>commons-fileupload</groupId>
+			    <artifactId>commons-fileupload</artifactId>
+			    <version>1.3.2</version>
+			</dependency>
+			<dependency>
+			    <groupId>commons-codec</groupId>
+			    <artifactId>commons-codec</artifactId>
+			    <version>1.9</version>
+			</dependency>
+		
+		<!-- fastDFS -->
+		<dependency>
+			<groupId>org.csource</groupId>
+		    <artifactId>fastdfs-client-java</artifactId>
+		    <version>1.27-SNAPSHOT</version>
+		</dependency>
+		
+		 <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			
+<!-- 			 <plugin>
+           <groupId>org.mortbay.jetty</groupId>
+           <artifactId>jetty-maven-plugin</artifactId>
+           <version>8.1.16.v20140903</version>
+           <configuration>
+               <scanIntervalSeconds>5</scanIntervalSeconds>
+               <webApp>
+                   <contextPath>/test</contextPath>
+               </webApp>
+               <connectors>
+                    <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                        <port>9080</port>
+                    </connector>
+                    <connector implementation="org.eclipse.jetty.server.ssl.SslSelectChannelConnector">
+                        <port>9443</port>
+                        <password>changeit</password>
+                    </connector>
+                </connectors>
+            </configuration>
+         </plugin>
+			 -->
+			
+			
+		</plugins>	
+		 <resources>
+            <resource>
+                <directory>src/main/webapp</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>	 
+	</build>
+
+
+</project>

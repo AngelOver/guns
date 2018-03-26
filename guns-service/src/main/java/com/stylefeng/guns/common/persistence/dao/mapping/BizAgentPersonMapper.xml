@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.common.persistence.dao.BizAgentPersonMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.stylefeng.guns.common.persistence.model.BizAgentPerson">
+		<id column="id" property="id" />
+		<result column="agent_id" property="agentId" />
+		<result column="username" property="username" />
+		<result column="mobile" property="mobile" />
+		<result column="id_card" property="idCard" />
+		<result column="id_card_positive" property="idCardPositive" />
+		<result column="id_card_negative" property="idCardNegative" />
+		<result column="agent_certificate1" property="agentCertificate1" />
+		<result column="agent_certificate2" property="agentCertificate2" />
+		<result column="business_introduce" property="businessIntroduce" />
+		<result column="work_year" property="workYear" />
+		<result column="serve_cusomter" property="serveCusomter" />
+		<result column="good_at" property="goodAt" />
+		<result column="show_picture" property="showPicture" />
+		<result column="index_show" property="indexShow" />
+		
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, agent_id AS agentId, username, mobile, id_card AS idCard, id_card_positive AS idCardPositive, 
+        id_card_negative AS idCardNegative, agent_certificate1 AS agentCertificate1, 
+        agent_certificate2 AS agentCertificate2, business_introduce AS businessIntroduce, work_year AS workYear, 
+        serve_cusomter AS serveCusomter, good_at AS goodAt, show_picture AS showPicture,index_show As indexShow
+    </sql>
+
+</mapper>

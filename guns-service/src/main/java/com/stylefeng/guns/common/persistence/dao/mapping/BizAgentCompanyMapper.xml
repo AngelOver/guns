@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.common.persistence.dao.BizAgentCompanyMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.stylefeng.guns.common.persistence.model.BizAgentCompany">
+		<id column="agent_company_id" property="agentCompanyId" />
+		<result column="agent_id" property="agentId" />
+		<result column="agent_company_name" property="agentCompanyName" />
+		<result column="agent_company_contactor" property="agentCompanyContactor" />
+		<result column="agent_company_mobile" property="agentCompanyMobile" />
+		<result column="business_license_no" property="businessLicenseNo" />
+		<result column="business_license" property="businessLicense" />
+		<result column="organization_code_certificate" property="organizationCodeCertificate" />
+		<result column="tax_registration_certificate" property="taxRegistrationCertificate" />
+		<result column="bank_company" property="bankCompany" />
+		<result column="bank_card_num" property="bankCardNum" />
+		<result column="power_of_attorney" property="powerOfAttorney" />
+		<result column="trustee" property="trustee" />
+		<result column="agent_certificate1" property="agentCertificate1" />
+		<result column="agent_certificate2" property="agentCertificate2" />
+		<result column="company_introduce" property="companyIntroduce" />
+		<result column="company_logo" property="companyLogo" />
+		<result column="company_scale" property="companyScale" />
+		<result column="company_build_time" property="companyBuildTime" />
+		<result column="index_show" property="indexShow" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        agent_company_id AS agentCompanyId, agent_id AS agentId, agent_company_name AS agentCompanyName, 
+        agent_company_contactor AS agentCompanyContactor, agent_company_mobile AS agentCompanyMobile, business_license_no AS businessLicenseNo, 
+        business_license AS businessLicense, organization_code_certificate AS organizationCodeCertificate, 
+        tax_registration_certificate AS taxRegistrationCertificate, bank_company AS bankCompany, 
+        bank_card_num AS bankCardNum, power_of_attorney AS powerOfAttorney, trustee, agent_certificate1 AS agentCertificate1, 
+        agent_certificate2 AS agentCertificate2, company_introduce AS companyIntroduce, company_logo AS companyLogo, 
+        company_scale AS companyScale, company_build_time AS companyBuildTime, index_show As indexShow
+    </sql>
+
+</mapper>

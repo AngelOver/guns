@@ -1,0 +1,41 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="bizPassportCouponsForm">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">                           
+                            <#input id="couponId" name="优惠券ID" underline="true"/>
+                            <#input id="passportId" name="会员ID" underline="true"/>
+                            <#input id="min" name="最低消费" underline="true"/>
+                            <#input id="cost" name="减免金额"/>
+                </div>
+
+                <div class="col-sm-6">
+                  		   <#select id="isUsed" name="是否使用" underline="true">
+                                            <option value="1">是</option>
+                                            <option value="2">否</option>
+                           </#select>
+                            <#input id="createdAt" name="获取时间"  underline="true" type ="date"
+                           	 clickFun="laydate({istime: false, format: 'YYYY-MM-DD'})"/>
+                            <#input id="usedAt" name="使用时间"  underline="true" type ="date"
+                            clickFun="laydate({istime: false, format: 'YYYY-MM-DD'})"/>
+                            <#input id="expiredAt" name="过期时间"  type ="date"
+                            clickFun="laydate({istime: false, format: 'YYYY-MM-DD'})"/>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="BizPassportCouponInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BizPassportCouponInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/bizPassportCoupon/bizPassportCoupon_info.js"></script>
+@}

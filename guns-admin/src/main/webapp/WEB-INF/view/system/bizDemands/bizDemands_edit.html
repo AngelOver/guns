@@ -1,0 +1,44 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="demandId" value="${item.demandId}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="passportId" name="会员ID" value="${item.passportId}" underline="true"/>
+                            <#input id="industry1" name="行业1" value="${item.industry1}" underline="true"/>
+                            <#input id="industry2" name="行业2" value="${item.industry2}" underline="true"/>
+                            <#input id="industry3" name="行业3" value="${item.industry3}" underline="true"/>
+                            <#input id="title" name="标题" value="${item.title}" underline="true"/>
+                            <#input id="priceBudget" name="价格预算" value="${item.priceBudget}" underline="true"/>
+                            <#input id="contentSupplement" name="内容补充" value="${item.contentSupplement}" underline="true"/>
+                            <#input id="image" name="图片" value="${item.image}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="label" name="标签" value="${item.label}" underline="true"/>
+                            <#input id="contacts" name="联系人" value="${item.contacts}" underline="true"/>
+                            <#input id="mobile" name="手机号" value="${item.mobile}" underline="true"/>
+                            <#input id="wechat" name="微信号" value="${item.wechat}" underline="true"/>
+                            <#input id="qq" name="QQ" value="${item.qq}" underline="true"/>
+                            <#input id="mail" name="邮箱" value="${item.mail}" underline="true"/>
+                            <#input id="releaseTime" name="发布时间" value="${item.releaseTime}" underline="true"/>
+                            <#input id="expiryDate" name="有效期" value="${item.expiryDate}" underline="true"/>
+                            <#input id="status" name="状态(0关闭1开启)" value="${item.status}" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="BizDemandsInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BizDemandsInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/bizDemands/bizDemands_info.js"></script>
+@}

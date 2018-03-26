@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.BizServiceCategoryDao">
+
+	<!-- <select id="tree" resultType="com.stylefeng.guns.core.node.ZTreeNode">
+		select id,pid as pId,simplename as name,
+		(
+		CASE
+		WHEN (pId = 0 OR pId IS NULL) THEN
+			'true'
+		ELSE
+			'false'
+		END
+		) as isOpen from sys_dept
+	</select> -->
+
+
+	<select id="list" resultType="map">
+		select * from biz_service_category	where 1=1
+		 <if test="condition != null and condition != ''">
+			AND category_name like CONCAT('%',#{condition},'%')
+		</if> 
+	</select>
+	
+	<select id="ServiceCateTreeList" resultType="com.stylefeng.guns.core.node.ZTreeNode">
+		SELECT  m1.category_id AS id ,(
+		CASE
+		WHEN (m2.category_id = 0 OR m2.category_id IS NULL) THEN
+		0
+		ELSE
+		m2.category_id
+		END
+		) AS pId , m1.category_name AS NAME ,
+		(
+		CASE
+		WHEN (m2.category_id = 0 OR m2.category_id IS NULL) THEN
+		'true'
+		ELSE
+		'false'
+		END
+		) as isOpen 		
+		from biz_service_category m1 LEFT JOIN biz_service_category m2 
+		ON m1.parent_category_id = m2.category_id
+	</select>
+	
+	<select id="findTopCategoryList" resultType="map">
+		SELECT* from biz_service_category where 1=1 AND `status` = 1 
+			AND  (parent_category_id = 0 OR parent_category_id='') 
+	</select>
+
+</mapper>

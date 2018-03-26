@@ -1,0 +1,58 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                        <!--     <#input id="orderId" name="订单ID" underline="true"/> -->
+                            <#input id="agentId" name="代理商ID" underline="true"/>
+                            <#input id="passportId" name="会员ID" underline="true"/>
+                            <#input id="orderNumber" name="订单编号" underline="true"/>
+                            <#input id="totalPrice" name="订单金额" underline="true"/>
+                            <#input id="username" name="联系人" underline="true"/>
+                            <#input id="mobile" name="联系方式" underline="true"/>
+                            <#input id="province" name="省" underline="true"/>
+                            <#input id="city" name="市" underline="true"/>
+                            <#input id="county" name="区" underline="true"/>
+                            <#input id="address" name="详细地址" underline="true"/>
+                            <#input id="telphone" name="固定电话" underline="true"/>
+                            <#input id="email" name="邮箱" underline="true"/>
+                            <#input id="subject" name="主体名称(个人或者企业名)"/>
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="certificateNum" name="证件号码(营业执照或者身份证)" underline="true"/>
+                            <#input id="recommender" name="推荐人" underline="true"/>
+                            <#input id="note" name="留言" underline="true"/>
+                            <#input id="invoice" name="是否开票" underline="true"/>
+                            <#input id="cost1" name="优惠1" underline="true"/>
+                            <#input id="cost2" name="优惠2" underline="true"/>
+                            <#input id="ext1" name="附加字段1" underline="true"/>
+                            <#input id="ext2" name="附加字段2" underline="true"/>
+                            <#input id="status" name="状态(0未支付1已取消2已支付)" underline="true"/>
+                            <#input id="createdAt" name="下单时间" underline="true"  type="date"
+								clickFun="laydate({istime: false, format: 'YYYY-MM-DD'})"/>
+                            <#input id="payedAt" name="支付时间" underline="true"   type="date"
+								clickFun="laydate({istime: false, format: 'YYYY-MM-DD'})" />
+                            <#input id="completedAt" name="完成时间" underline="true"  type="date"
+								clickFun="laydate({istime: false, format: 'YYYY-MM-DD'})"	/>
+                            <#input id="receivedAt" name="接单时间" underline="true"   type="date"
+								clickFun="laydate({istime: false, format: 'YYYY-MM-DD'})" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="BizOrdersInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BizOrdersInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/bizOrders/bizOrders_info.js"></script>
+@}

@@ -1,0 +1,33 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="logId" value="${item.logId}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                           <!--  <#input id="logId" name="日志ID" value="${item.logId}" underline="true"/> -->
+                            <#input id="orderId" name="订单ID" value="${item.orderId}" underline="true"/>
+                            <#input id="passportId" name="会员ID" value="${item.passportId}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="type" name="操作类型" value="${item.type}" underline="true"/>
+                            <#input id="note" name="备注" value="${item.note}" underline="true"/>
+                            <#input id="createdAt" name="操作时间" value="${item.createdAt}" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="BizOrdersLogInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BizOrdersLogInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/bizOrdersLog/bizOrdersLog_info.js"></script>
+@}

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.BizRegionsDao">
+
+	<!-- <select id="tree" resultType="com.stylefeng.guns.core.node.ZTreeNode">
+		select id,pid as pId,simplename as name,
+		(
+		CASE
+		WHEN (pId = 0 OR pId IS NULL) THEN
+			'true'
+		ELSE
+			'false'
+		END
+		) as isOpen from sys_dept
+	</select> -->
+
+
+	<select id="list" resultType="map">
+		select * from biz_regions	where 1=1
+		 <if test="condition != null and condition != ''">
+			AND name like CONCAT('%',#{condition},'%')
+		</if> 
+	</select>
+	
+	<select id="RegionsTreeList" resultType="com.stylefeng.guns.core.node.ZTreeNode">
+		SELECT  m1.id AS id ,(
+		CASE
+		WHEN (m2.id = 0 OR m2.id IS NULL) THEN
+		0
+		ELSE
+		m2.id
+		END
+		) AS pId , m1.name AS NAME ,
+		(
+		CASE
+		WHEN (m2.id = 0 OR m2.id IS NULL) THEN
+		'true'
+		ELSE
+		'false'
+		END
+		) as isOpen 		
+		from biz_regions m1 LEFT JOIN biz_regions m2 
+		ON m1.parent_id = m2.id
+	</select>
+	
+	<select id="findTopRegionsList" resultType="map">
+		SELECT* from biz_Regions where 1=1 AND `status` = 1 
+			AND  (parent_id = 0 OR parent_id='') 
+	</select>
+
+</mapper>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.common.persistence.dao.BizServiceMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.stylefeng.guns.common.persistence.model.BizService">
+		<id column="service_id" property="serviceId" />
+		<result column="agent_id" property="agentId" />
+		<result column="category_id" property="categoryId" />
+		<result column="name" property="name" />
+		<result column="shop_price" property="shopPrice" />
+		<result column="list_pic" property="listPic" />
+		<result column="detail" property="detail" />
+		<result column="status" property="status" />
+		<result column="service_info" property="serviceInfo" />
+		<result column="service_customer" property="serviceCustomer" />
+		<result column="release" property="release" />
+		<result column="created_at" property="createdAt" />
+		<result column="update_time" property="updateTime" />
+		<result column="verify" property="verify" />
+		<result column="selected" property="selected" />
+		<result column="service_info_tel" property="serviceInfoTel"/>
+		<result column="contract_select_id" property="contractSelectId"/>
+		<result column="goods_key_word" property="goodsKeyWord"/>
+		<result column="goods_sec_title" property="goodsSecTitle"/>
+	</resultMap>
+	
+	<!-- 插入-->
+	<insert id="insertService" useGeneratedKeys="true" keyProperty="serviceId" parameterType="com.stylefeng.guns.common.persistence.model.BizService" >
+    insert into biz_service(service_id, agent_id, category_id,name, shop_price, list_pic, detail, status, service_info, service_customer,  created_at,
+    update_time,verify,selected,service_info_tel ,contract_select_id ,goods_key_word,goods_sec_title)
+    values (#{serviceId,jdbcType=INTEGER}, #{agentId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER},#{name,jdbcType=VARCHAR},#{shopPrice,jdbcType=DECIMAL},
+    #{listPic,jdbcType=VARCHAR} ,#{detail,jdbcType=VARCHAR},#{status,jdbcType=INTEGER},#{serviceInfo,jdbcType=VARCHAR},#{serviceCustomer,jdbcType=VARCHAR},
+     #{createdAt,jdbcType=DATE} , #{updateTime,jdbcType=DATE}, #{verify,jdbcType=INTEGER},#{selected,jdbcType=INTEGER},
+    #{serviceInfoTel,jdbcType=VARCHAR}, #{contractSelectId,jdbcType=VARCHAR}, #{goodsKeyWord,jdbcType=VARCHAR}, #{goodsSecTitle,jdbcType=VARCHAR})
+  </insert> 
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        service_id AS serviceId, agent_id AS agentId, category_id AS categoryId, name, shop_price AS shopPrice, list_pic AS listPic, detail, status
+    </sql>
+    
+    <!-- 通用查询结果列 -->
+     <select id="getServiceList" resultType="map">
+		SELECT a.* from biz_service a where 1=1 AND  a.status = 1 AND a.agent_id = #{map.agent_id}
+		<if test="map.verify!= null and map.verify!= ''">
+			AND a.verify = #{map.verify}
+		</if>
+		<if test="map.release!= null and map.release!= ''">
+			AND a.release = #{map.release}
+		</if>  
+		<if test="map.name!= null and map.name!= ''">
+			AND a.name like CONCAT('%',#{map.name},'%')
+		</if> 		
+		<if test="map.privce_start!= null and map.privce_start!= ''">
+			AND a.shop_price &gt; #{map.privce_start}
+		</if>
+		<if test="map.privce_end!= null and map.privce_end!= ''">
+			AND a.shop_price &lt; #{map.privce_end}
+		</if>
+		<if test="map.begin_time!= null and map.begin_time!= ''">
+			AND a.update_time &gt; #{map.begin_time}
+		</if> 
+		<if test="map.end_time!= null and map.end_time!= ''">
+			AND a.update_time &lt; #{map.end_time}
+		</if> 
+		<if test="map.pageNo != null and  map.pageSize != null">
+				LIMIT #{map.pageNo} , #{map.pageSize}
+		</if>	
+	</select>	
+	
+	 <!-- 商家的基本信息-->
+     <select id="getServiceInfo" resultType="map">
+	SELECT a.DownService , b.UpService , c.verifyService , d.deleteService , e.`name` FROM
+		(SELECT COUNT(*) AS DownService FROM biz_service a WHERE    a.`release` = 2  AND agent_id = #{agent_id}) a,
+		(SELECT COUNT(*) AS UpService FROM biz_service a WHERE    a.`release` = 1  AND agent_id = #{agent_id})b ,
+		(SELECT COUNT(*) AS verifyService FROM biz_service a WHERE  a.`verify` = 3 AND agent_id = #{agent_id})c ,
+		(SELECT COUNT(*) AS deleteService FROM biz_service a WHERE  a.`status` = 2 AND agent_id = #{agent_id})d ,
+		(SELECT a.`name` FROM biz_agent a where agent_id = #{agent_id})e 
+	</select>		
+
+	 <!-- 通过分类找服务-->
+     <select id="getServiceByCate_id" resultType="map">
+		SELECT * from biz_service where category_id in (
+			SELECT category_id from biz_service_category where parent_category_id = #{categoryId} 
+		)
+	</select>	
+</mapper>

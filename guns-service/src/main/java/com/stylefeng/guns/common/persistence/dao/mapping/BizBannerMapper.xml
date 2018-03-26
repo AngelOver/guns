@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.common.persistence.dao.BizBannerMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.stylefeng.guns.common.persistence.model.BizBanner">
+		<id column="id" property="id" />
+		<result column="type" property="type" />
+		<result column="title" property="title" />
+		<result column="spec" property="spec" />
+		<result column="sort" property="sort" />
+		<result column="image_url" property="imageUrl" />
+		<result column="agent_Id" property="agentId" />
+		<result column="status" property="status" />
+		<result column="url" property="url" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, type, title, spec, sort, image_url AS imageUrl, agent_Id AS agentId, status, url
+    </sql>
+
+</mapper>

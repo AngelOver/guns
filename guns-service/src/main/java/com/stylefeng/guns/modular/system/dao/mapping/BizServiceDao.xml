@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.BizServiceDao">
+
+	<!-- <select id="tree" resultType="com.stylefeng.guns.core.node.ZTreeNode">
+		select id,pid as pId,simplename as name,
+		(
+		CASE
+		WHEN (pId = 0 OR pId IS NULL) THEN
+			'true'
+		ELSE
+			'false'
+		END
+		) as isOpen from sys_dept
+	</select> -->
+
+	<select id="list" resultType="map">
+		select a.* , b.category_name from biz_service a   
+			LEFT JOIN biz_service_category b 
+				ON a.category_id = b.category_id where 1=1
+		 <if test="condition != null and condition != ''">
+			AND a.name like CONCAT('%',#{condition},'%')
+		</if> 
+	</select>
+
+</mapper>

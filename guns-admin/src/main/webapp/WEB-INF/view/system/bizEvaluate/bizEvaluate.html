@@ -1,0 +1,38 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="condition" name="名称" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="BizEvaluate.search()"/>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="BizEvaluateTableToolbar" role="group">
+                            @if(shiro.hasPermission("/bizEvaluate/add")){
+                                <#button name="添加" icon="fa-plus" clickFun="BizEvaluate.openAddBizEvaluate()"/>
+                            @}
+                            @if(shiro.hasPermission("/bizEvaluate/update")){
+                                <#button name="修改" icon="fa-plus" clickFun="BizEvaluate.openBizEvaluateDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/bizEvaluate/delete")){
+                                <#button name="删除" icon="fa-plus" clickFun="BizEvaluate.delete()" space="true"/>
+                            @}
+                        </div>
+                        <#table id="BizEvaluateTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/bizEvaluate/bizEvaluate.js"></script>
+@}

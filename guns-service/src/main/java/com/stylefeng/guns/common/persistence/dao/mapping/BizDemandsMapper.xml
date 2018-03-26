@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.common.persistence.dao.BizDemandsMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.stylefeng.guns.common.persistence.model.BizDemands">
+		<id column="demand_id" property="demandId" />
+		<result column="passport_id" property="passportId" />
+		<result column="industry1" property="industry1" />
+		<result column="industry2" property="industry2" />
+		<result column="industry3" property="industry3" />
+		<result column="title" property="title" />
+		<result column="price_budget" property="priceBudget" />
+		<result column="content_supplement" property="contentSupplement" />
+		<result column="image" property="image" />
+		<result column="label" property="label" />
+		<result column="contacts" property="contacts" />
+		<result column="mobile" property="mobile" />
+		<result column="wechat" property="wechat" />
+		<result column="qq" property="qq" />
+		<result column="mail" property="mail" />
+		<result column="release_time" property="releaseTime" />
+		<result column="expiry_date" property="expiryDate" />
+		<result column="status" property="status" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        demand_id AS demandId, passport_id AS passportId, industry1, industry2, industry3, title, price_budget AS priceBudget, content_supplement AS contentSupplement, image, label, contacts, mobile, wechat, qq, mail, release_time AS releaseTime, expiry_date AS expiryDate, status
+    </sql>
+
+</mapper>

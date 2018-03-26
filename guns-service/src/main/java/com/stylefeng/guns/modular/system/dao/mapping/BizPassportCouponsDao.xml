@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.BizPassportCouponsDao">
+	
+	<select id="list" resultType="map">
+		SELECT a.* , b.coupon_name  ,c.nickname from biz_passport_coupon a 
+			LEFT JOIN biz_coupons b ON a.coupon_id = b.coupon_id 
+				LEFT JOIN biz_passport c ON a.coupon_user_id = c.passport_id where 1=1		
+			 <if test="condition != null and condition != ''">
+				AND b.coupon_name like CONCAT('%',#{condition},'%')
+			</if> 
+	</select>		
+</mapper>

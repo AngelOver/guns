@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.common.persistence.dao.BizCartsMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.stylefeng.guns.common.persistence.model.BizCarts">
+		<id column="cart_id" property="cartId" />
+		<result column="agent_id" property="agentId" />
+		<result column="passport_id" property="passportId" />
+		<result column="service_id" property="serviceId" />
+		<result column="service_name" property="serviceName" />
+		<result column="shop_price" property="shopPrice" />
+		<result column="num" property="num" />
+		<result column="s_total" property="sTotal" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        cart_id AS cartId, agent_id AS agentId, passport_id AS passportId, service_id AS serviceId, service_name AS serviceName, shop_price AS shopPrice, num, s_total AS sTotal
+    </sql>
+
+</mapper>

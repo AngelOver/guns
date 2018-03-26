@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.BizLinksDao">
+       <select id="list" resultType="map">
+         select * from biz_links where 1=1
+         <if test="condition != null and condition != ''">
+			AND links_name like CONCAT('%',#{condition},'%')
+		</if>
+       </select>       
+</mapper>

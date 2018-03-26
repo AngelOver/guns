@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.common.persistence.dao.BizPassportCouponMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.stylefeng.guns.common.persistence.model.BizPassportCoupon">
+		<id column="coupon_user_id" property="couponUserId" />
+		<result column="coupon_id" property="couponId" />
+		<result column="passport_id" property="passportId" />
+		<result column="min" property="min" />
+		<result column="cost" property="cost" />
+		<result column="is_used" property="isUsed" />
+		<result column="created_at" property="createdAt" />
+		<result column="used_at" property="usedAt" />
+		<result column="expired_at" property="expiredAt" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        coupon_user_id AS couponUserId, coupon_id AS couponId, passport_id AS passportId, min, cost, is_used AS isUsed, created_at AS createdAt, used_at AS usedAt, expired_at AS expiredAt
+    </sql>
+    
+    <select id="getCouponsList" resultType="map">
+		SELECT a.* , b.* , c.category_name  from biz_passport_coupon  a 
+			INNER JOIN  biz_coupons b ON a.coupon_id = b.coupon_id 
+				LEFT JOIN biz_service_category c ON b.category_id = c.category_id
+				 where 1=1 AND	 a.passport_id = #{map.passport_id}		
+			<if test="map.is_used != null and map.is_used != ''">
+				AND a.is_used = #{map.is_used}
+			</if> 	
+			<if test="map.pageNo != null and map.pageNo != '' and map.pageSize != null and map.pageSize != ''">
+				LIMIT #{map.pageNo} , #{map.pageSize}
+			</if>	 
+	</select>
+
+</mapper>

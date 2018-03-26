@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.common.persistence.dao.BizCouponsMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.stylefeng.guns.common.persistence.model.BizCoupons">
+		<id column="coupon_id" property="couponId" />
+		<result column="agent_id" property="agentId" />
+		<result column="coupon_name" property="couponName" />
+		<result column="min" property="min" />
+		<result column="cost" property="cost" />
+		<result column="num" property="num" />
+		<result column="expires" property="expires" />
+		<result column="created_at" property="createdAt" />
+		<result column="status" property="status" />
+		<result column="category_id" property="categoryId" />
+		<result column="coupons_num" property="couponsNum" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        coupon_id AS couponId, agent_id AS agentId, coupon_name AS couponName, min, cost, num, expires, created_at AS createdAt, status
+    </sql>
+
+</mapper>

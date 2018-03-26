@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.common.persistence.dao.BizServiceCategoryMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.stylefeng.guns.common.persistence.model.BizServiceCategory">
+		<id column="category_id" property="categoryId" />
+		<result column="agent_id" property="agentId" />
+		<result column="category_name" property="categoryName" />
+		<result column="parent_category_id" property="parentCategoryId" />
+		<result column="status" property="status" />
+		<result column="sort" property="sort" />
+		<result column="details" property="details" />
+		<result column="describe" property="describe" />
+		<result column="category_img" property="categoryImg" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        category_id AS categoryId, agent_id AS agentId, category_name AS categoryName, parent_category_id AS parentCategoryId, status, sort
+    </sql>      
+    
+    <select id="findTopCategoryList" resultType="map">
+		SELECT* from biz_service_category where 1=1 AND `status` = 1 
+			AND  (parent_category_id = 0 OR parent_category_id='')
+	</select>
+</mapper>

@@ -1,0 +1,56 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="bizAgentCompanyForm">
+
+            <input type="hidden" id="id" value="${item.agentCompanyId}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">                  
+                            <#input id="agentId" name="代理商" value="${item.agentId}" underline="true"/>
+                            <#input id="agentCompanyName" name="代理所名称" value="${item.agentCompanyName}" underline="true"/>
+                            <#input id="agentCompanyContactor" name="联系人姓名" value="${item.agentCompanyContactor}" underline="true"/>
+                            <#input id="agentCompanyMobile" name="联系人手机号" value="${item.agentCompanyMobile}" underline="true"/>                        
+                            <#input id="businessLicenseNo" name="营业执照号码" value="${item.businessLicenseNo}" underline="true"/>
+                            
+                            <#avatar id="businessLicense" name="营业执照" underline="true" avatarImg="${item.businessLicense}"/>
+                            
+                            <#avatar id="organizationCodeCertificate" name="组织机构代码证" underline="true" avatarImg="${item.organizationCodeCertificate}"/>
+                            <#avatar id="taxRegistrationCertificate" name="税务登记证" underline="true" avatarImg="${item.taxRegistrationCertificate}"/>
+           
+                            <#input id="bankCompany" name="开户行" value="${item.bankCompany}" />
+                            <#select id="indexShow" name="是否首页展示" value="${item.indexShow}" underline="true">
+                                                <option value="0">禁用</option>
+                                                <option value="1">启用</option>
+                            </#select>
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="bankCardNum" name="卡号" value="${item.bankCardNum}" underline="true"/>
+                            <#input id="powerOfAttorney" name="委托书" value="${item.powerOfAttorney}" underline="true"/>
+                        
+                            <#avatar id="trustee" name="委托人身份证" underline="true" avatarImg="${item.trustee}"/>
+                            
+                            <#avatar id="agentCertificate1" name="资格证书1" underline="true" avatarImg="${item.agentCertificate1}"/>
+                            <#avatar id="agentCertificate1" name="资格证书2" underline="true" avatarImg="${item.agentCertificate2}"/>
+                            <#input id="companyIntroduce" name="公司简介" value="${item.companyIntroduce}" underline="true"/>
+ 
+                            <#avatar id="companyLogo" name="公司logo" underline="true" avatarImg="${item.companyLogo}"/>
+                            <#input id="companyScale" name="企业规模" value="${item.companyScale}" underline="true"/>
+                            <#input id="companyBuildTime" name="成立时间" value="${item.companyBuildTime}" underline="true"/>
+                            
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="BizAgentCompanyInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BizAgentCompanyInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/bizAgentCompany/bizAgentCompany_info.js"></script>
+@}

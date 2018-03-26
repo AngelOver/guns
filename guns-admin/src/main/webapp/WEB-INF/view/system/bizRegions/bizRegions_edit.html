@@ -1,0 +1,53 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" value="" id="bizRegionsForm">
+
+              <input type="hidden" id="id" value="${item.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="name" name="名称" value="${item.name}" underline="true"/>
+                            <!-- <#input id="name" name="名称" value="${item.name}" underline="true"/> 
+                            <#input id="parentId" name="市" value="${item.parentId}" underline="true"/>-->
+                            <#input id="bigname" name="上级单位" value="${item.parentId}" underline="true"
+                          	hidden="parentId" readonly="readonly"
+							clickFun="BizRegionsInfoDlg.showDeptSelectTreeProvince(); return false;"
+							style="background-color: #ffffff !important;"
+							selectFlag="true" selectId="treeDemoDiv" selectTreeId="treeDemo" selectStyle="width:244px !important;"/>
+                            <!-- <#input id="name" name="区/县" value="${item.id}" underline="true" readonly="readonly" hidden="id"
+							clickFun="BizRegionsInfoDlg.showDeptSelectTree(); return false;"
+							style="background-color: #ffffff !important;"/>-->
+							
+                            
+                            <#input id="shortName" name="简称" value="${item.shortName}" underline="true"/>
+                            <#input id="level" name="层级" value="${item.level}" underline="true"/>
+                            <#input id="cityCode" name="城市编码" value="${item.cityCode}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="zipCode" name="邮政编码" value="${item.zipCode}" underline="true"/>
+                            <#input id="mergerName" name="地址全称" value="${item.mergerName}" underline="true"/>
+                            <#input id="lng" name="纬度" value="${item.lng}" underline="true"/>
+                            <#input id="lat" name="经度" value="${item.lat}" underline="true"/>
+                            <#input id="fullPinyin" name="地址拼音" value="${item.fullPinyin}" underline="true"/>
+                            <#input id="pinyin" name="地址简拼" value="${item.pinyin}" />
+                </div>
+            </div>
+            <!-- <div id="menuContent" class="menuContent"
+				style="display: none; position: absolute; z-index: 200;">
+				<ul id="treeDemo" class="ztree tree-box" style="width: 249px !important;"></ul>
+			</div>	 -->
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="BizRegionsInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BizRegionsInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/bizRegions/bizRegions_info.js"></script>
+@}
